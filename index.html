@@ -1,13 +1,129 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="en">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
     <title>Heng's Blog</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        .quicksand-uniquifier-caption {
+            font-family: "Quicksand", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 900;
+            font-style: normal;
+            color: #60575B
+        }
+
+        .quicksand-uniquifier-maincontent {
+            font-family: "Quicksand", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+            color: black
+        }
+    </style>
+
+
+
+
+    <style>
+        /* 預設樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            background-color: rgb(255, 237, 240);
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 手機樣式 */
+        @media (max-width: 600px) {
+            body {
+                font-size: 16px;
+                /* 字體變小 */
+                background-color: rgb(252, 252, 215);
+                /* 背景變淡黃 */
+            }
+        }
+
+        /* 平板樣式 */
+        @media (min-width: 601px) and (max-width: 900px) {
+            body {
+                font-size: 18px;
+                /* 字體稍微縮小 */
+                background-color: rgb(253, 237, 255);
+                /* 背景變淡紫 */
+            }
+        }
+    </style>
 </head>
 
-<body style="background-color:rgb(255, 237, 240)">
+
+<body>
+    <!--style="background-color:rgb(255, 237, 240)"-->
     <!-- 頁頭區 -->
+<body align="center">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="assets/images/0a6b9f42b0d4a595f3bf5511ff8eb629.jpg" width="50"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Homeworks
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="0304/index.html">JULY</a></li>
+                                <li><a class="dropdown-item" href="0311/index.html">AUGUST</a></li>
+                                <li><a class="dropdown-item" href="0318/index.html">NOVEMBER</a></li>
+                                 <li><a class="dropdown-item" href="0318/index.html">DECEMBER</a></li>
+                               
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">More...</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+
+
     <header>
         <h1 style="color:rgb(233, 96, 119); font-family:cursive;">周姮均HeNgChUn's peRsonAl Bloggg~~~</h1>
         <nav>
@@ -23,6 +139,52 @@
 
     <!-- 主內容區 -->
     <main>
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/images/003.jpg" class="d-block w-100"alt="Le Petit Prince">
+                    <div class="carousel-caption d-none d-md-block">
+                   
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/004.jpg" class="d-block w-100"alt="Le Petit Prince">
+                    <div class="carousel-caption d-none d-md-block">
+                       
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/005.jpg" class="d-block w-100"alt="Le Petit Prince">
+                    <div class="carousel-caption d-none d-md-block">
+                       
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+
+
+
         <!-- 側邊欄補充資訊 -->
         <aside style="width:30%; float:right;">
             <blockquote>
@@ -52,8 +214,10 @@
                 </table>
             </section>
             <section style="color:rgb(172, 106, 172)">
-                <p>我是一位資科系大二學生，目前正在學習<mark>資料結構</mark> 和 <mark>Java 程式設計</mark>，並且我在課餘時間 <mark>學習電腦繪圖</mark> 與 <mark>社群經營
-                    </mark>希望可以成為一個業餘插畫家，用繪畫溫暖人心。</p>
+                <p>我是一位資科系大二學生，目前正在學習<mark>資料結構</mark> 和 <mark>Java 程式設計</mark>，並且我在課餘時間 <mark>學習電腦繪圖</mark> 與
+                    <mark>社群經營
+                    </mark>希望可以成為一個業餘插畫家，用繪畫溫暖人心。
+                </p>
                 <p>此外，我也熱愛音樂與閱讀，希望將藝術與科技結合，讓冰冷的科技可以靈活運用在藝術的世界。</p>
             </section>
         </article>
@@ -108,6 +272,10 @@
             </section>
         </article>
 
+
+
+
+
         <!-- 音樂作品介紹 -->
         <article id="section4">
             <h2>🎹喜歡的電視劇OST</h2>
@@ -121,11 +289,11 @@
         <!-- 視訊作品介紹 -->
         <article id="section5">
             <h2>📽️視訊介紹</h2>
-            
+
             <video width="100" controls>
                 <!-- 改為你的作品 -->
                 <source src="assets/video/2022年7月23日.mp4" type="video/mp4">
-              
+
         </article>
 
         <!-- 圖片作品集介紹與描述 -->
@@ -147,8 +315,9 @@
         <article id="section7">
             <h2>更多資訊</h2>
             <!-- 改為你的作品 -->
-             <h3> 這學期報告的參考資料</h3>
-            <embed src="assets/pdf/【中華輔導與諮商學報】72-4_遭受歧視對男同志身心健康關係之研究：+以復原力為調節變項、內化污名與憂思反芻為中介變項.pdf" width="500" height="600">
+            <h3> 這學期報告的參考資料</h3>
+            <embed src="assets/pdf/【中華輔導與諮商學報】72-4_遭受歧視對男同志身心健康關係之研究：+以復原力為調節變項、內化污名與憂思反芻為中介變項.pdf" width="500"
+                height="600">
         </article>
 
         <!-- 互動元素 
