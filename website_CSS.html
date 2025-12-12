@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資深前端架構師 - 極簡作品集</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==================================== */
+        /* 1. CSS Reset & Variables (核心變數與重置) */
+        /* ==================================== */
+
+        :root {
+            /* 顏色變數 */
+            --color-primary: #f783b9;
+            /* 主色：蘋果藍 */
+            --color-background: #fcedf3;
+            /* 背景色：純白 */
+            --color-text-dark: #1a1a1a;
+            /* 主要文字色：深灰黑 */
+            --color-text-light: #6e6e73;
+            /* 次要文字色：淺灰 */
+            --color-border: #e0e0e0;
+            /* 邊框顏色 */
+
+            /* 字體變數 */
+            --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-size-base: 16px;
+
+            /* 間距變數 */
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 32px;
+            --spacing-lg: 64px;
+            --spacing-xl: 96px;
+
+            /* 其他變數 */
+            --border-radius-base: 8px;
+            --header-height: 60px;
+        }
+
+        /* 基礎 Reset - 確保佈局一致性 */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-background);
+            min-height: 100vh;
+        }
+
+        /* 語義化標籤基礎樣式 */
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #fc7cb2;
+            /* 主色略深的 hover 效果 */
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* 輔助類別：讓內容水平置中 */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            /* 最大寬度限制 */
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+            /* 手機優先：預設左右小間距 */
+        }
+
+        /* 桌機/平板優化：增加 container 左右間距 */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 var(--spacing-md);
+            }
+        }
+
+
+        /* ==================================== */
+        /* 2. Header & Navigation (頂部導航) */
+        /* ==================================== */
+
+        .header {
+            background-color: var(--color-background);
+            border-bottom: 1px solid var(--color-border);
+            height: var(--header-height);
+            position: sticky;
+            /* 粘性定位 */
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: none;
+            /* Mobile-First: 預設隱藏導航連結 */
+        }
+
+        /* 桌機顯示導航連結 */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                gap: var(--spacing-md);
+            }
+
+            .nav-links a {
+                font-weight: 500;
+                color: var(--color-text-dark);
+            }
+        }
+
+        .menu-toggle {
+            display: block;
+            /* Mobile-First: 預設顯示漢堡菜單按鈕 */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--spacing-xs);
+            font-size: 1.5rem;
+            color: var(--color-text-dark);
+        }
+
+        /* 桌機隱藏漢堡菜單按鈕 */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* ==================================== */
+        /* 3. Hero Section (主要焦點區) */
+        /* ==================================== */
+
+        .hero-section {
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            min-height: calc(100vh - var(--header-height));
+            /* 確保至少佔滿視窗高度 */
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            /* 響應式字體大小 */
+            font-weight: 900;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* CTA 按鈕樣式 */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius-base);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #fb70b8;
+            color: var(--color-background);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
+        }
+
+        /* ==================================== */
+        /* 4. Feature Cards (三欄式特色卡片) */
+        /* ==================================== */
+
+        .features-section {
+            padding: var(--spacing-lg) 0;
+            background-color: #f7f7f7;
+            /* 輕微區隔背景色 */
+        }
+
+        .features-grid {
+            /* 使用 CSS Grid 進行佈局 */
+            display: grid;
+            gap: var(--spacing-md);
+            /* Mobile-First: 預設單欄 */
+            grid-template-columns: 1fr;
+        }
+
+        /* 平板佈局：兩欄 */
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 桌機佈局：三欄 */
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            background-color: var(--color-background);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-base);
+            border: 1px solid var(--color-border);
+            text-align: left;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .feature-card p {
+            color: var(--color-text-light);
+        }
+
+        /* ==================================== */
+        /* 5. Projects Gallery (響應式畫廊) */
+        /* ==================================== */
+
+        .projects-section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .gallery-grid {
+            display: grid;
+            gap: var(--spacing-md);
+            /* Mobile-First: 預設單欄 */
+            grid-template-columns: 1fr;
+        }
+
+        /* 平板佈局：兩欄 */
+        @media (min-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 桌機佈局：三欄 */
+        @media (min-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .project-item {
+            border-radius: var(--border-radius-base);
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 200px;
+            /* 固定高度以保持整齊，物件適應方式 */
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-info {
+            padding: var(--spacing-sm);
+            background-color: var(--color-background);
+        }
+
+        .project-info h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        /* ==================================== */
+        /* 6. Footer (頁腳) */
+        /* ==================================== */
+
+        .footer {
+            padding: var(--spacing-md) 0;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container navbar">
+            <a href="#hero" class="logo">
+                周姮均HeNgChUn
+            </a>
+            <nav>
+                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-list"
+                    aria-label="Toggle navigation menu">☰</button>
+                <ul id="nav-list" class="nav-links">
+                    <li><a href="#hero">首頁</a></li>
+                    <li><a href="#features">專業</a></li>
+                    <li><a href="#projects">作品集</a></li>
+                    <li><a href="#contact" class="cta-button">聯絡我</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <h1 class="hero-title">
+                    正在練習成為前端架構工程師的電腦繪圖愛好者
+                </h1>
+                <p class="hero-subtitle">
+                    我是年輕的學生，正在學習設計網站。
+                </p>
+                <a href="#projects" class="cta-button">探索我的作品</a>
+            </div>
+        </section>
+   
+          
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/images/003.jpg" class="d-block w-100"alt="Le Petit Prince">
+                    <div class="carousel-caption d-none d-md-block">
+                   
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/004.jpg" class="d-block w-100"alt="Le Petit Prince">
+                    <div class="carousel-caption d-none d-md-block">
+                       
+                    </div>
+                </div>
+                
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>我的核心專長</h2>
+                    <p>專注於藝術與科技的結合。</p>
+                </header>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <h3>半後塗真人轉漫</h3>
+                        <p>選擇一張真實人物的圖片，從草稿、勾線道上色花費了九個小時。</p>
+                        <a class="navbar-brand" href="#"><img src="assets/images/1742576607459.jpg" width="300"></a>
+                    </article>
+                    <article class="feature-card">
+                        <h3>電腦繪圖學習過程作品集</h3>
+                        <p>為了學習不同姿勢的畫法，我選擇了這張頭部微微向隔壁傾斜的圖片。</p>
+                        <a class="navbar-brand" href="#"><img
+                                src="assets/images/Screenshot_20250422_092539_Instagram.jpg" width="400"></a>
+                    </article>
+                    <article class="feature-card">
+                        <h3>公仔(改畫比例)</h3>
+                        <p>運用例圖，畫出與原圖不同比例的圖片，學習起型。</p>
+                        <a class="navbar-brand" href="#"><img
+                                src="assets/images/Messenger_creation_0D34CFFD-05E2-4270-8C97-532C8EA6DD14.jpeg"
+                                width="400"></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>精選專案作品集</h2>
+                    <p>從學習到作品呈現學習成果。</p>
+
+                </header>
+                <div class="gallery-grid">
+                    <article class="project-item">
+                        <img src="assets/images/003.jpg" alt="高性能單頁應用範例圖片"width="4000" height="3000">
+                        <div class="project-info">
+                            <h4>專案 A：電腦繪圖漫改化真人(鴨風)</h4>
+                            <p>2025上半年，我運用兩年學習電腦繪圖的經驗，自學小紅書創作者Tiye的自創畫風---鴨風。</p>
+                            <article id="section5">
+
+
+                                <video width="250" controls>
+                                    <!-- 改為你的作品 -->
+                                    <source src="assets/video/未命名的作品.mp4" type="video/mp4">
+
+                            </article>
+
+                        </div>
+                        <div class="project-info">
+                            <h4>專案 A：Our team's project</h4>
+                            <p>2025年上半年我們運用AI生成了一段作美食的影片。</p>
+                            <article id="section5">
+
+
+                                <video width="400" controls>
+                                    <!-- 改為你的作品 -->
+                                    <source src="assets/video/Screen_Recording_20251211_171427_YouTube.mp4"
+                                        type="video/mp4">
+
+                            </article>
+
+                        </div>
+                    </article>
